@@ -1,0 +1,32 @@
+ion-grid {
+    font-family: var(--primary-font);
+  padding: 40% 0 0 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 26px;
+}
+
+.custom-input {
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+}
+
+.access-button {
+  margin: 10px 0 20px 0;
+}
+
+.links-footer{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
