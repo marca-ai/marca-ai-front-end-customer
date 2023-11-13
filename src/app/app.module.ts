@@ -10,9 +10,10 @@ import { FormsModule, NgControl, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { PreLoginComponent } from './views/pre-login/pre-login.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, PreLoginComponent],
   imports: [
     CommonModule,
     BrowserModule,
