@@ -24,13 +24,37 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
-@import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Krona+One&family=Montserrat&display=swap");
 
-:root{
-    --primary-color: #363062;
-    --secondary-color: #435585;
-    --tertiary-color: #818FB4;
-    --quaternary-color: #F5E8C7;
-    --primary-font: 'Montserrat', sans-serif;
-    --secondary-font: 'Krona One', sans-serif;
+:root {
+  --primary-color: #363062;
+  --secondary-color: #435585;
+  --tertiary-color: #818fb4;
+  --quaternary-color: #f5e8c7;
+  --primary-font: "Montserrat", sans-serif;
+  --secondary-font: "Krona One", sans-serif;
+  --success: #00c851;
+  --warning: #EE9322;
+  --danger: #ed553b;
+  --info: #20639b;
+}
+
+ion-toast {
+  font-family: var(--primary-font);
+  --color: var(--quaternary-color);
+}
+ion-toast.custom-toast::part(button) {
+  color: var(--quaternary-color);
+}
+ion-toast.success-toast {
+  --background: var(--success);
+}
+ion-toast.warn-toast {
+  --background: var(--warning) !important;
+}
+ion-toast.error-toast {
+  --background: var(--danger) !important;
+}
+ion-toast.info-toast {
+  --background: var(--info) !important;
 }
