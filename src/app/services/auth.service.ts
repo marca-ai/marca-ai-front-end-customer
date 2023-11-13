@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Signup } from '../models/signup';
 import { Login } from '../models/login';
 import { Observable, delay, retry, timeout } from 'rxjs';
-import { Token } from '@angular/compiler';
+import { Token } from '../models/token';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/user';
 
