@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './services/auth.guard';
-import { PreLoginComponent } from './views/pre-login/pre-login.component';
 
 const routes: Routes = [
   {
@@ -11,7 +10,6 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: PreLoginComponent,
     children: [
       {
         path: '',

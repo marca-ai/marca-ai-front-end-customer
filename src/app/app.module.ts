@@ -6,14 +6,13 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule, NgControl, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
-import { PreLoginComponent } from './views/pre-login/pre-login.component';
 
 @NgModule({
-  declarations: [AppComponent, PreLoginComponent],
+  declarations: [AppComponent],
   imports: [
     CommonModule,
     BrowserModule,

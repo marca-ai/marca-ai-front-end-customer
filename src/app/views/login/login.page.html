@@ -16,13 +16,13 @@
           <ion-input type="email" name="email" formControlName="email" required></ion-input>
         </ion-item>
         <div *ngIf="this.loginForm.controls['email'].touched && this.loginForm.controls['email'].invalid">
-        <div class="error" *ngIf="errorControl['email'].errors?.['required']">
-          <ion-text class="error_text" color="danger">Email é obrigatório.</ion-text>
+          <div class="error" *ngIf="errorControl['email'].errors?.['required']">
+            <ion-text class="error_text" color="danger">Email é obrigatório.</ion-text>
+          </div>
+          <div class="error" *ngIf="errorControl['email'].errors?.['email']">
+            <ion-text class="error_text" color="danger">Informe um email válido.</ion-text>
+          </div>
         </div>
-        <div class="error" *ngIf="errorControl['email'].errors?.['email']">
-          <ion-text class="error_text" color="danger">Informe um email válido.</ion-text>
-        </div>
-      </div>
       </ion-col>
     </ion-row>
     <ion-row class="input">
@@ -32,7 +32,8 @@
             <ion-icon name="lock-closed-outline"></ion-icon>&nbsp;
             Senha
           </ion-label>
-          <ion-input name="password" formControlName="password" [type]="showPwd ? 'text' : 'password'" required></ion-input>
+          <ion-input name="password" formControlName="password" [type]="showPwd ? 'text' : 'password'"
+            required></ion-input>
           <ion-icon style="margin-top: 17px;" slot="end" [name]="pwdIcon" (click)="togglePwd()"></ion-icon>
         </ion-item>
         <div *ngIf="this.loginForm.controls['password'].touched && this.loginForm.controls['password'].invalid">
@@ -51,23 +52,21 @@
       </ion-col>
     </ion-row>
   </form>
-  
+
   <ion-row class="links-footer">
     <ion-row>
       <ion-col>
-        <a href="">Recuperar senha</a>
+        <a href="/recovery-password">Recuperar senha</a>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <a href="">Cadastre-se</a>
+        <a href="/signup">Cadastre-se</a>
       </ion-col>
     </ion-row>
   </ion-row>
 
-  <ion-loading
-    [isOpen]="loading"
-    message="Aguarde...">
+  <ion-loading [isOpen]="loading" message="Aguarde...">
   </ion-loading>
 
 </ion-grid>
