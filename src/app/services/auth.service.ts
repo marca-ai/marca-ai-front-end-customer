@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Signup } from '../models/signup';
 import { Login } from '../models/login';
@@ -14,14 +14,16 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(login: Login): Observable<Token> {
+    const headers = new HttpHeaders().set('skipAuth', 'true');
     return this.http
-      .post<Token>(environment.apiUrl + 'auth/customer/signin', login)
+      .post<Token>(environment.apiUrl + 'auth/customer/signin', login, { headers })
       .pipe(delay(100), retry(3), timeout(180000));
   }
 
   signup(user: Signup): Observable<Token> {
+    const headers = new HttpHeaders().set('skipAuth', 'true');
     return this.http
-      .post<Token>(environment.apiUrl + 'auth/customer/signup', user)
+      .post<Token>(environment.apiUrl + 'auth/customer/signup', user, { headers })
       .pipe(delay(100), retry(3), timeout(180000));
   }
 
