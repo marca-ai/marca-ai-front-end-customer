@@ -1,72 +1,74 @@
-<ion-grid>
-  <ion-row>
-    <ion-col>
-      <div id="title">Login</div>
-    </ion-col>
-  </ion-row>
-
-  <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
-    <ion-row class="input">
-      <ion-col>
-        <ion-item>
-          <ion-label position="floating">
-            <ion-icon name="mail-outline"></ion-icon>&nbsp;
-            Email
-          </ion-label>
-          <ion-input type="email" name="email" formControlName="email" required></ion-input>
-        </ion-item>
-        <div *ngIf="this.loginForm.controls['email'].touched && this.loginForm.controls['email'].invalid">
-          <div class="error" *ngIf="errorControl['email'].errors?.['required']">
-            <ion-text class="error_text" color="danger">Email é obrigatório.</ion-text>
-          </div>
-          <div class="error" *ngIf="errorControl['email'].errors?.['email']">
-            <ion-text class="error_text" color="danger">Informe um email válido.</ion-text>
-          </div>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="input">
-      <ion-col>
-        <ion-item>
-          <ion-label position="floating">
-            <ion-icon name="lock-closed-outline"></ion-icon>&nbsp;
-            Senha
-          </ion-label>
-          <ion-input name="password" formControlName="password" [type]="showPwd ? 'text' : 'password'"
-            required></ion-input>
-          <ion-icon style="margin-top: 17px;" slot="end" [name]="pwdIcon" (click)="togglePwd()"></ion-icon>
-        </ion-item>
-        <div *ngIf="this.loginForm.controls['password'].touched && this.loginForm.controls['password'].invalid">
-          <div class="error" *ngIf="errorControl['password'].errors?.['required']">
-            <ion-text class="error_text" color="danger">A senha é obrigatória.</ion-text>
-          </div>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="access-button">
-      <ion-col>
-        <ion-button type="submit" id="btn-login">
-          Acessar
-          <ion-icon name="log-in-outline"></ion-icon>
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </form>
-
-  <ion-row class="links-footer">
+<ion-content>
+  <ion-grid>
     <ion-row>
       <ion-col>
-        <a href="/recovery-password">Recuperar senha</a>
+        <div class="title">Login</div>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col>
-        <a href="/signup">Cadastre-se</a>
-      </ion-col>
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+      <ion-row class="input">
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">
+              <ion-icon name="mail-outline"></ion-icon>&nbsp;
+              Email
+            </ion-label>
+            <ion-input type="email" name="email" formControlName="email" required></ion-input>
+          </ion-item>
+          <div *ngIf="this.loginForm.controls['email'].touched && this.loginForm.controls['email'].invalid">
+            <div class="error" *ngIf="errorControl['email'].errors?.['required']">
+              <ion-text class="error_text" color="danger">Email é obrigatório.</ion-text>
+            </div>
+            <div class="error" *ngIf="errorControl['email'].errors?.['email']">
+              <ion-text class="error_text" color="danger">Informe um email válido.</ion-text>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="input">
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">
+              <ion-icon name="lock-closed-outline"></ion-icon>&nbsp;
+              Senha
+            </ion-label>
+            <ion-input name="password" formControlName="password" [type]="showPwd ? 'text' : 'password'"
+              required></ion-input>
+            <ion-icon style="margin-top: 17px;" slot="end" [name]="pwdIcon" (click)="togglePwd()"></ion-icon>
+          </ion-item>
+          <div *ngIf="this.loginForm.controls['password'].touched && this.loginForm.controls['password'].invalid">
+            <div class="error" *ngIf="errorControl['password'].errors?.['required']">
+              <ion-text class="error_text" color="danger">A senha é obrigatória.</ion-text>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="access-button">
+        <ion-col>
+          <ion-button type="submit" id="btn-login">
+            Acessar
+            <ion-icon name="log-in-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+
+    <ion-row class="links-footer">
+      <ion-row>
+        <ion-col>
+          <a href="/recovery-password">Recuperar senha</a>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <a href="/signup">Cadastre-se</a>
+        </ion-col>
+      </ion-row>
     </ion-row>
-  </ion-row>
 
-  <ion-loading [isOpen]="loading" message="Aguarde...">
-  </ion-loading>
+    <ion-loading [isOpen]="loading" message="Aguarde...">
+    </ion-loading>
 
-</ion-grid>
+  </ion-grid>
+</ion-content>
