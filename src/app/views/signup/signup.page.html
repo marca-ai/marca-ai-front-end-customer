@@ -10,9 +10,143 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Cadastre-se</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <h1 class="title">Bem vindo!</h1>
+  <p class="paragraph">Preencha os dados abaixo para prosseguir</p>
+  <form class="form" [formGroup]="signupForm" (ngSubmit)="signup()" novalidate>
+    <!-- NAME -->
+    <ion-row class="input">
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">
+            <ion-icon name="person"></ion-icon>&nbsp;
+            Nome
+          </ion-label>
+          <ion-input type="text" name="name" formControlName="name" required></ion-input>
+        </ion-item>
+        <div *ngIf="this.signupForm.controls['name'].touched && this.signupForm.controls['name'].invalid">
+          <div class="error" *ngIf="errorControl['name'].errors?.['required']">
+            <ion-text class="error_text" color="danger">Nome é obrigatório.</ion-text>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <!-- EMAIL -->
+    <ion-row class="input">
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">
+            <ion-icon name="mail"></ion-icon>&nbsp;
+            Email
+          </ion-label>
+          <ion-input type="email" name="email" formControlName="email" required></ion-input>
+        </ion-item>
+        <div *ngIf="this.signupForm.controls['email'].touched && this.signupForm.controls['email'].invalid">
+          <div class="error" *ngIf="errorControl['email'].errors?.['required']">
+            <ion-text class="error_text" color="danger">Email é obrigatório.</ion-text>
+          </div>
+          <div class="error" *ngIf="errorControl['email'].errors?.['email']">
+            <ion-text class="error_text" color="danger">Informe um email válido.</ion-text>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <!-- BIRTH DATE -->
+    <ion-row class="input">
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">
+            <ion-icon name="calendar"></ion-icon>&nbsp;
+            Data de aniversário
+          </ion-label>
+          <ion-input type="text" name="birthDate" formControlName="birthDate" required></ion-input>
+        </ion-item>
+        <div *ngIf="this.signupForm.controls['birthDate'].touched && this.signupForm.controls['birthDate'].invalid">
+          <div class="error" *ngIf="errorControl['birthDate'].errors?.['required']">
+            <ion-text class="error_text" color="danger">Data de aniversário é obrigatória</ion-text>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <!-- PHONE NUMBER -->
+    <ion-row class="input">
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">
+            <ion-icon name="call"></ion-icon>&nbsp;
+            Contato
+          </ion-label>
+          <ion-input type="text" name="phoneNumber" formControlName="phoneNumber" required></ion-input>
+        </ion-item>
+        <div *ngIf="this.signupForm.controls['phoneNumber'].touched && this.signupForm.controls['phoneNumber'].invalid">
+          <div class="error" *ngIf="errorControl['phoneNumber'].errors?.['required']">
+            <ion-text class="error_text" color="danger">Telefone de contato é obrigatório</ion-text>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <!-- CEP -->
+    <ion-row class="input">
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">
+            <ion-icon name="home"></ion-icon>&nbsp;
+            CEP
+          </ion-label>
+          <ion-input type="text" name="cep" formControlName="cep" required></ion-input>
+        </ion-item>
+        <div *ngIf="this.signupForm.controls['cep'].touched && this.signupForm.controls['cep'].invalid">
+          <div class="error" *ngIf="errorControl['cep'].errors?.['required']">
+            <ion-text class="error_text" color="danger">O CEP é obrigatório.</ion-text>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <!-- PASSWORD -->
+    <ion-row class="input">
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">
+            <ion-icon name="lock-closed"></ion-icon>&nbsp;
+            Senha
+          </ion-label>
+          <ion-input name="password" formControlName="password" [type]="showPwd1 ? 'text' : 'password'"
+            required></ion-input>
+          <ion-icon style="margin-top: 17px;" slot="end" [name]="pwdIcon1" (click)="togglePwd1()"></ion-icon>
+        </ion-item>
+        <div *ngIf="this.signupForm.controls['password'].touched && this.signupForm.controls['password'].invalid">
+          <div class="error" *ngIf="errorControl['password'].errors?.['required']">
+            <ion-text class="error_text" color="danger">A senha é obrigatória.</ion-text>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <!-- CONFIRM PASSWORD -->
+    <ion-row class="input">
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">
+            <ion-icon name="lock-closed"></ion-icon>&nbsp;
+            Confirme a senha
+          </ion-label>
+          <ion-input name="confirmPassword" formControlName="confirmPassword" [type]="showPwd2 ? 'text' : 'password'"
+            required></ion-input>
+          <ion-icon style="margin-top: 17px;" slot="end" [name]="pwdIcon2" (click)="togglePwd2()"></ion-icon>
+        </ion-item>
+        <div *ngIf="this.signupForm.controls['confirmPassword'].touched && this.signupForm.controls['confirmPassword'].invalid">
+          <div class="error" *ngIf="errorControl['confirmPassword'].errors?.['required']">
+            <ion-text class="error_text" color="danger">A confirmação da senha é obrigatória.</ion-text>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="access-button">
+      <ion-col>
+        <ion-button type="submit" id="btn-login">
+          Cadastre-se
+          <ion-icon name="log-in-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>

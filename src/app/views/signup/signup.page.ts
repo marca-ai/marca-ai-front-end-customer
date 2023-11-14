@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,10 +8,43 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.page.scss'],
 })
 export class SignupPage implements OnInit {
+  pwdIcon1 = 'eye-outline';
+  showPwd1 = false;
+  pwdIcon2 = 'eye-outline';
+  showPwd2 = false;
+  signupForm!: FormGroup;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              public formBuilder: FormBuilder,) { }
 
   ngOnInit() {
+    this.signupForm = this.formBuilder.group({
+      name: ['', [Validators.required]],
+      birthDate: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      phoneNumber: ['',[Validators.required]],
+      cep: ['',[Validators.required]],
+      password: ['', [ Validators.required]],
+      confirmPassword: ['', [ Validators.required]],
+    });
+  }
+
+  signup(){
+    
+  }
+
+  get errorControl(){
+    return this.signupForm.controls;
+  }
+
+  togglePwd1() {
+    this.showPwd1 = !this.showPwd1;
+    this.pwdIcon1 = this.showPwd1 ? 'eye-off-outline' : 'eye-outline';
+  }
+
+  togglePwd2() {
+    this.showPwd2 = !this.showPwd2;
+    this.pwdIcon2 = this.showPwd2 ? 'eye-off-outline' : 'eye-outline';
   }
 
   goBack(){
