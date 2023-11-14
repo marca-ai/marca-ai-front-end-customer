@@ -1,8 +1,8 @@
 {
-  "name": "marca-ai-front-end-customer",
+  "name": "marca-ai",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Marcos Sousa",
+  "homepage": "https://github.com/marcos-vcs",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

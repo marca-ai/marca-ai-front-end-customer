@@ -1,0 +1,37 @@
+ion-grid {
+  font-family: var(--primary-font);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 26px;
+}
+
+.paragraph{
+  text-align: center;
+  font-weight: 400;
+}
+
+.form{
+  padding: 5% 0 0 0  ;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.input {
+  width: 80%;
+}
+
+.access-button {
+  margin: 10px 0 20px 0;
+}
+
+.error_text {
+  font-size: 14px;
+}
