@@ -16,7 +16,7 @@ export class AuthService {
   login(login: Login): Observable<Token> {
     const headers = new HttpHeaders().set('skipAuth', 'true');
     return this.http
-      .post<Token>('http://localhost:8080/api/v1/auth/customer/signin', login, { headers })
+      .post<Token>(environment.apiUrl + 'auth/customer/signin', login, { headers })
       .pipe(delay(100), retry(3), timeout(180000));
   }
 
