@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Login } from 'src/app/models/login';
 import { AuthService } from 'src/app/services/auth.service';
 import { ToastService } from 'src/app/services/toast.service';
 
@@ -47,8 +46,12 @@ export class LoginPage implements OnInit {
       this.loading = true;
       this.authService.login(this.loginForm.value).subscribe({
         next: (response) => {
+          this.loading = false;
+          this.toastService.success('Login realizado com sucesso.', 5000, 'top');
           localStorage.setItem('Authorization', response.token);
-          this.router.navigate(['home']);
+          setTimeout(() => {
+            this.router.navigate(['']);
+          },100);
         },
         error: (error) => {
           this.loading = false;
@@ -57,11 +60,6 @@ export class LoginPage implements OnInit {
           }else{
             this.toastService.error('Não foi possível fazer login, tente novamente mais tarde.', 5000, 'top');
           }
-          
-        },
-        complete: () => {
-          this.loading = false;
-          this.toastService.success('Login realizado com sucesso.', 5000, 'top');
         }
       });
     }else{
