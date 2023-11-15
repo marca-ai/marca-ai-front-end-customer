@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { MaskitoModule } from '@maskito/angular';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MaskitoModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
