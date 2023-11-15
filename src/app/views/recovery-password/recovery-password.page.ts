@@ -142,13 +142,13 @@ export class RecoveryPasswordPage implements OnInit {
           localStorage.setItem('Authorization', response.message);
           this.loading = false;
           this.toastService.success('Senha alterada com sucesso', 5000, 'top');
-          setTimeout(() => {
-            this.router.navigate(['login']);
-          },100)
+          this.router.navigate(['login']);
         },
         error: (error) => {
           this.loading = false;
-          this.toastService.error('Houve um erro ao recuperar senha', 5000, 'top');
+          if(error.status !== 400){
+            this.toastService.error('Houve um erro ao recuperar senha', 5000, 'top');
+          }
         }
       })
     }

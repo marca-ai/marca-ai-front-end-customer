@@ -16,7 +16,7 @@ export class RecoveryPasswordService {
 
     return this.http.post<MessageResponse>(environment.apiUrl + 'password-recovery/send-code',
     {'userEmail': email}, { headers })
-    .pipe(delay(100), retry(3), timeout(180000));
+    .pipe(delay(100), retry(0), timeout(180000));
   }
 
   validCode(email: string, code: string): Observable<MessageResponse>{
@@ -24,7 +24,7 @@ export class RecoveryPasswordService {
 
     return this.http.post<MessageResponse>(environment.apiUrl + 'password-recovery/verify-code',
     {'userEmail': email, 'code': code}, { headers })
-    .pipe(delay(100), retry(3), timeout(180000));
+    .pipe(delay(100), retry(0), timeout(180000));
   }
 
   recoveryPassword(email: string, password: string): Observable<MessageResponse>{
@@ -32,7 +32,7 @@ export class RecoveryPasswordService {
 
     return this.http.post<MessageResponse>(environment.apiUrl + 'password-recovery/recovery-password',
     {'userEmail': email, 'newPassword': password}, { headers })
-    .pipe(delay(100), retry(3), timeout(180000));
+    .pipe(delay(100), retry(0), timeout(180000));
   }
 
 
