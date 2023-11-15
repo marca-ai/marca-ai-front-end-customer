@@ -6,18 +6,25 @@ import { Observable, delay, retry, timeout } from 'rxjs';
 import { Token } from '../models/token';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/user';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+              private router: Router) {}
 
   login(login: Login): Observable<Token> {
     const headers = new HttpHeaders().set('skipAuth', 'true');
     return this.http
       .post<Token>(environment.apiUrl + 'auth/customer/signin', login, { headers })
       .pipe(delay(100), retry(3), timeout(180000));
+  }
+
+  logout(){
+    localStorage.removeItem('Authorization');
+    this.router.navigate(['/login']);
   }
 
   signup(user: Signup): Observable<Token> {
