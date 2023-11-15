@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-signup',
@@ -13,8 +15,11 @@ export class SignupPage implements OnInit {
   pwdIcon2 = 'eye-outline';
   showPwd2 = false;
   signupForm!: FormGroup;
+  loading: boolean = false;
 
   constructor(private router: Router,
+              private toastService: ToastService,
+              private authService: AuthService,
               public formBuilder: FormBuilder,) { }
 
   ngOnInit() {
@@ -30,7 +35,25 @@ export class SignupPage implements OnInit {
   }
 
   signup(){
-    
+    this.loading = true;
+    this.authService.signup(this.signupForm.value).subscribe({
+      next: (response) => {
+        localStorage.setItem('Authorization', response.token);
+        this.loading = false;
+        this.toastService.success('Cadastro realizado com sucesso.', 5000, 'top');
+        setTimeout(() => {
+          this.router.navigate(['home']);
+        },100);
+      },
+      error: (error) => {
+        this.loading = false;
+        if(error.status === 422){
+          this.toastService.error(error.error.message, 5000, 'top');
+        }else{
+          this.toastService.error('Houve um erro ao realizar o cadastro.', 5000, 'top');
+        }
+      }
+    });
   }
 
   get errorControl(){

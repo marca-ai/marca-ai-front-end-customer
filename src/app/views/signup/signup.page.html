@@ -75,7 +75,7 @@
             <ion-icon name="call"></ion-icon>&nbsp;
             Contato
           </ion-label>
-          <ion-input type="text" name="phoneNumber" formControlName="phoneNumber" required></ion-input>
+          <ion-input mask="(00) 0000-0000||(00) 0 0000-0000" type="text" name="phoneNumber" formControlName="phoneNumber" required></ion-input>
         </ion-item>
         <div *ngIf="this.signupForm.controls['phoneNumber'].touched && this.signupForm.controls['phoneNumber'].invalid">
           <div class="error" *ngIf="errorControl['phoneNumber'].errors?.['required']">
@@ -92,7 +92,7 @@
             <ion-icon name="home"></ion-icon>&nbsp;
             CEP
           </ion-label>
-          <ion-input type="text" name="cep" formControlName="cep" required></ion-input>
+          <ion-input mask="00000-000" type="text" name="cep" formControlName="cep" required></ion-input>
         </ion-item>
         <div *ngIf="this.signupForm.controls['cep'].touched && this.signupForm.controls['cep'].invalid">
           <div class="error" *ngIf="errorControl['cep'].errors?.['required']">
