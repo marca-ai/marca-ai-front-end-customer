@@ -20,14 +20,11 @@ export class SignupPage implements OnInit {
   loading: boolean = false;
 
   readonly phoneMask: MaskitoOptions = {
-    mask: [
-      '(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/
-    ],
+    mask: ['(', /[1-9]/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/,/\d/, '-', /\d/, /\d/, /\d/, /\d/],
   };
   readonly cepMask: MaskitoOptions = {
     mask: [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/],
   };
-
   readonly birthDateMask: MaskitoOptions = {
     mask: [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/],
   };
