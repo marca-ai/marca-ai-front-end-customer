@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { SignupPageRoutingModule } from './signup-routing.module';
 
 import { SignupPage } from './signup.page';
+import { MaskitoModule } from '@maskito/angular';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { SignupPage } from './signup.page';
     IonicModule,
     ReactiveFormsModule,
     FormsModule,
-    SignupPageRoutingModule
+    SignupPageRoutingModule,
+    MaskitoModule,
   ],
   declarations: [SignupPage]
 })

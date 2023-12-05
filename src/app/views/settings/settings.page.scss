@@ -1,0 +1,37 @@
+.logout-btn{
+    margin-top: 10px;
+    text-align: center;
+    font-family: var(--primary-font);
+}
+
+.avatar label{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.avatar label img{
+    border-radius: 50%;
+    width: 50%;
+    vertical-align: middle;
+    object-fit: cover;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.user-info{
+    margin-top: 15px;
+}
+
+.user-data{
+    margin-top: 2px;
+    text-align: center;
+    font-family: var(--primary-font);
+}
+
+.user-name{
+    font-size: 24px;
+}
+
+input[type="file"] {
+    display: none;
+}

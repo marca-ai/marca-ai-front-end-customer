@@ -25,7 +25,7 @@
         </ion-item>
         <div *ngIf="this.signupForm.controls['name'].touched && this.signupForm.controls['name'].invalid">
           <div class="error" *ngIf="errorControl['name'].errors?.['required']">
-            <ion-text class="error_text" color="danger">Nome é obrigatório.</ion-text>
+            <ion-text class="error_text" color="danger">Nome é obrigatório</ion-text>
           </div>
         </div>
       </ion-col>
@@ -45,7 +45,7 @@
             <ion-text class="error_text" color="danger">Email é obrigatório.</ion-text>
           </div>
           <div class="error" *ngIf="errorControl['email'].errors?.['email']">
-            <ion-text class="error_text" color="danger">Informe um email válido.</ion-text>
+            <ion-text class="error_text" color="danger">Informe um email válido</ion-text>
           </div>
         </div>
       </ion-col>
@@ -58,11 +58,19 @@
             <ion-icon name="calendar"></ion-icon>&nbsp;
             Data de aniversário
           </ion-label>
-          <ion-input type="text" name="birthDate" formControlName="birthDate" required></ion-input>
+          <ion-input [maskito]="birthDateMask"
+                     [maskitoElement]="maskPredicate"
+                     type="tel"
+                     name="birthDate"
+                     formControlName="birthDate" required>
+          </ion-input>
         </ion-item>
         <div *ngIf="this.signupForm.controls['birthDate'].touched && this.signupForm.controls['birthDate'].invalid">
           <div class="error" *ngIf="errorControl['birthDate'].errors?.['required']">
             <ion-text class="error_text" color="danger">Data de aniversário é obrigatória</ion-text>
+          </div>
+          <div class="error" *ngIf="errorControl['birthDate'].errors?.['minlength']">
+            <ion-text class="error_text" color="danger">Data em formato inválido</ion-text>
           </div>
         </div>
       </ion-col>
@@ -75,11 +83,20 @@
             <ion-icon name="call"></ion-icon>&nbsp;
             Contato
           </ion-label>
-          <ion-input type="text" name="phoneNumber" formControlName="phoneNumber" required></ion-input>
+          <ion-input [maskito]="phoneMask"
+                     [maskitoElement]="maskPredicate"
+                     type="tel"
+                     name="phoneNumber"
+                     formControlName="phoneNumber"
+                     required>
+          </ion-input>
         </ion-item>
         <div *ngIf="this.signupForm.controls['phoneNumber'].touched && this.signupForm.controls['phoneNumber'].invalid">
           <div class="error" *ngIf="errorControl['phoneNumber'].errors?.['required']">
             <ion-text class="error_text" color="danger">Telefone de contato é obrigatório</ion-text>
+          </div>
+          <div class="error" *ngIf="errorControl['phoneNumber'].errors?.['minlength']">
+            <ion-text class="error_text" color="danger">Telefone em formato inválido</ion-text>
           </div>
         </div>
       </ion-col>
@@ -92,11 +109,19 @@
             <ion-icon name="home"></ion-icon>&nbsp;
             CEP
           </ion-label>
-          <ion-input type="text" name="cep" formControlName="cep" required></ion-input>
+          <ion-input [maskito]="cepMask"
+                     [maskitoElement]="maskPredicate"
+                     type="tel"
+                     name="cep"
+                     formControlName="cep" required>
+          </ion-input>
         </ion-item>
         <div *ngIf="this.signupForm.controls['cep'].touched && this.signupForm.controls['cep'].invalid">
           <div class="error" *ngIf="errorControl['cep'].errors?.['required']">
             <ion-text class="error_text" color="danger">O CEP é obrigatório.</ion-text>
+          </div>
+          <div class="error" *ngIf="errorControl['cep'].errors?.['minlength']">
+            <ion-text class="error_text" color="danger">CEP em formato inválido</ion-text>
           </div>
         </div>
       </ion-col>
@@ -132,9 +157,15 @@
             required></ion-input>
           <ion-icon style="margin-top: 17px;" slot="end" [name]="pwdIcon2" (click)="togglePwd2()"></ion-icon>
         </ion-item>
-        <div *ngIf="this.signupForm.controls['confirmPassword'].touched && this.signupForm.controls['confirmPassword'].invalid">
+        <div *ngIf="(this.signupForm.controls['confirmPassword'].touched &&
+                     this.signupForm.controls['confirmPassword'].invalid) ||
+                     this.signupForm.errors">
           <div class="error" *ngIf="errorControl['confirmPassword'].errors?.['required']">
             <ion-text class="error_text" color="danger">A confirmação da senha é obrigatória.</ion-text>
+          </div>
+          <div class="error" *ngIf="this.signupForm.errors?.['passwordIsNotEquals'] &&
+                    !errorControl['confirmPassword'].errors?.['required']">
+            <ion-text class="error_text" color="danger">As senhas informadas divergem.</ion-text>
           </div>
         </div>
       </ion-col>

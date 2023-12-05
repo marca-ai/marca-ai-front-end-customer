@@ -1,13 +1,35 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>settings</ion-title>
+    <ion-title>Configurações</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">settings</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="avatar">
+        <input type="file" name="input-file" id="input-file" (change)="onFileSelected($event)" accept="image/*">
+        <label for="input-file">
+          <img loading="eager"
+            [src]="loggedUser.profilePicture.url ?? ''"
+            onerror="this.onerror=null;this.src='../../../assets/profile-picture.png';">
+        </label>
+
+        <ion-button (click)="removePhoto()">Remover</ion-button>
+
+        <div class="user-info">
+          <div class="user-data user-name">{{loggedUser.name}}</div>
+          <div class="user-data">{{loggedUser.email}}</div>
+          <div class="user-data">{{loggedUser.phoneNumber | maskito:phoneMask}}</div>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="logout-btn">
+        <ion-button shape="round" fill="outline" color="danger" (click)="logout()">Sair</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+
+
